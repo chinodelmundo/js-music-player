@@ -3,12 +3,13 @@ var init = function(){
 			$target = $(e.target);
 			
 			if($target.hasClass("fa-play")){
+				if($(".fa-pause").length){
+					togglePlay($(".fa-pause").parent());
+				}
 				changeSelected($target.parent());
 			}else{
 				$target.removeClass("fa-pause")
 					   .addClass("fa-play");
-				
-				$target.parent().removeClass("song-selected");
 				
 				$(".fa-pause-circle-o").removeClass("fa-pause-circle-o")
 					   .addClass("fa-play-circle-o");
@@ -94,8 +95,8 @@ var changeSelected = function($selectedSongItem){
 	$("#playing-song-artist").text(artist);
 }
 
-var togglePlay = function($selectedSongItem){
-	var song = $selectedSongItem.find("audio").first().get(0);
+var togglePlay = function($songItem){
+	var song = $songItem.find("audio").first().get(0);
 	
 	if(song.paused){
 		song.play();
