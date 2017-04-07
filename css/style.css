@@ -1,0 +1,50 @@
+.header {
+	background-color: gray;
+	padding-top: 1px;
+	border-bottom: 2px solid;
+}
+
+.song-item {
+    display: -webkit-flex;
+    display: flex;
+	height: 50px;
+	border-bottom: 1px solid #cecece; 
+	border-top: 1px solid #cecece;
+}
+
+.song-details {
+	margin: 5px 0 0 20px;
+}
+
+.play-button {
+	width: 50px;
+}
+
+.footer {
+    display: -webkit-flex;
+    display: flex;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 80px;
+	background-color: #3f3f3f;
+	color: white;
+	font-size: 20px;
+	padding-top: 20px;
+}
+
+.player-buttons {
+	width: 200px;
+}
+
+.player-button {
+	width: 50px;
+	font-size: 50px !important;
+	background-color: #3f3f3f;
+	border: none;
+}
+
+.song-selected {
+	background-color: #999999;
+	color: white;
+}
