@@ -125,7 +125,7 @@ var initEventHandlers = function(){
 			$("#add-panel").toggle(500);
 		});
 		
-		$("#submit-song").on("click", function(e){
+		$("#add-song-button").on("click", function(e){
 			var title = $("#song-title").val();
 			var artist = $("#song-artist").val();
 			var url = $("#song-url").val();

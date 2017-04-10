@@ -14,7 +14,7 @@
 		<div class="header">
 			<h1>
 				<i class="fa fa-music" aria-hidden="true"></i> Royalty Free Music Player 
-				<a href="#" title="Add Songs" id="add-button" class="pure-button"> Add songs </a>
+				<button title="Add Songs" id="add-button" class="pure-button"> Add songs </button>
 			</h1>
 		</div>
 		<div class="content">
@@ -22,26 +22,25 @@
 			</div>
 			<div id="add-panel" >
 				<form class="pure-form pure-form-stacked">
-						<legend>
-							<div class="add-panel-header"> 
-								Song Details
-								<button id="hide-panel-button" class="pure-button fa fa-arrow-right"></button>								
-							</div>							
-						</legend>
-						
-						<fieldset class="pure-group">
-							<label for="song-title">Title</label>
-							<input id="song-title" class="pure-input-1" type="text" value="My Girl">
-						</fieldset>
-						<fieldset class="pure-group">
-							<label for="song-artist">Artist</label>
-							<input id="song-artist" class="pure-input-1" type="text" value="Temptations">
-						</fieldset>
-						<fieldset class="pure-group">
-							<label for="song-url">MP3 URL</label>
-							<textarea id="song-url" class="pure-input-1" rows="4">http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2009.mp3</textarea>
-						</fieldset>
-							<button id="submit-song" class="pure-button pure-button-primary">Add song</button>
+					<legend>
+						<div class="add-panel-header"> 
+							Song Details
+							<button id="hide-panel-button" class="pure-button fa fa-arrow-right"></button>								
+						</div>							
+					</legend>
+					<fieldset class="pure-group">
+						<label for="song-title">Title</label>
+						<input id="song-title" class="pure-input-1" type="text" value="My Girl">
+					</fieldset>
+					<fieldset class="pure-group">
+						<label for="song-artist">Artist</label>
+						<input id="song-artist" class="pure-input-1" type="text" value="Temptations">
+					</fieldset>
+					<fieldset class="pure-group">
+						<label for="song-url">MP3 URL</label>
+						<textarea id="song-url" class="pure-input-1" rows="4">http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2009.mp3</textarea>
+					</fieldset>
+					<a hre="#" id="add-song-button" class="pure-button pure-button-primary">Add song</a>
 				</form>
 			</div>
 		</div>
