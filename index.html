@@ -7,63 +7,42 @@
 		<link href="css/pure-min.css" rel="stylesheet">
 		<link href="css/font-awesome.min.css" rel="stylesheet">
 		
-		<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="js/jquery.min.js"></script>
 		<script src="js/script.js"></script>
 	</head>
 	<body>
 		<div class="header">
-			<h1><i class="fa fa-music" aria-hidden="true"></i> Royalty Free Music Player </h1>
+			<h1>
+				<i class="fa fa-music" aria-hidden="true"></i> Royalty Free Music Player 
+				<a href="#" title="Add Songs" id="add-button" class="pure-button"> Add songs </a>
+			</h1>
 		</div>
-		<div class="song-list">
-			<div class="song-item song-selected">
-				<button  class="pure-button fa fa-play play-button"></button>
-				<div class="song-details">
-					<b> Allegro </b><br/>
-					<i> Beethoven </i>
-				</div>
-				<audio>
-					<source src="http://www.stephaniequinn.com/Music/Allegro%20from%20Duet%20in%20C%20Major.mp3" type="audio/mpeg" />
-				</audio>
+		<div class="content">
+			<div id="song-list">
 			</div>
-			<div class="song-item">
-				<button  class="pure-button fa fa-play play-button"></button>
-				<div class="song-details">
-					<b> Canon </b><br/>
-					<i> Pachebel </i>
-				</div>
-				<audio>
-					<source src="http://www.stephaniequinn.com/Music/Canon.mp3" type="audio/mpeg" />
-				</audio>
-			</div>
-			<div class="song-item">
-				<button  class="pure-button fa fa-play play-button"></button>
-				<div class="song-details">
-					<b> The Entertainer </b><br/>
-					<i> Scott Jopin </i>
-				</div>
-				<audio>
-					<source src="http://www.stephaniequinn.com/Music/The%20Entertainer.mp3" type="audio/mpeg" />
-				</audio>
-			</div>
-			<div class="song-item">
-				<button  class="pure-button fa fa-play play-button"></button>
-				<div class="song-details">
-					<b> Largo </b><br/>
-					<i> Vivaldi </i>
-				</div>
-				<audio>
-					<source src="http://www.stephaniequinn.com/Music/Vivaldi%20-Largo%20from%20Four%20Seasons.mp3" type="audio/mpeg" />
-				</audio>
-			</div>
-			<div class="song-item">
-				<button  class="pure-button fa fa-play play-button"></button>
-				<div class="song-details">
-					<b> Presto </b><br/>
-					<i> Mozart </i>
-				</div>
-				<audio>
-					<source src="http://www.stephaniequinn.com/Music/Mozart%20-%20Presto.mp3" type="audio/mpeg" />
-				</audio>
+			<div id="add-panel" >
+				<form class="pure-form pure-form-stacked">
+						<legend>
+							<div class="add-panel-header"> 
+								Song Details
+								<button id="hide-panel-button" class="pure-button fa fa-arrow-right"></button>								
+							</div>							
+						</legend>
+						
+						<fieldset class="pure-group">
+							<label for="song-title">Title</label>
+							<input id="song-title" class="pure-input-1" type="text" value="My Girl">
+						</fieldset>
+						<fieldset class="pure-group">
+							<label for="song-artist">Artist</label>
+							<input id="song-artist" class="pure-input-1" type="text" value="Temptations">
+						</fieldset>
+						<fieldset class="pure-group">
+							<label for="song-url">MP3 URL</label>
+							<textarea id="song-url" class="pure-input-1" rows="4">http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2009.mp3</textarea>
+						</fieldset>
+							<button id="submit-song" class="pure-button pure-button-primary">Add song</button>
+				</form>
 			</div>
 		</div>
 		<div class="footer">
@@ -73,8 +52,8 @@
 				<button class="fa fa-step-forward fa-4 player-button"></button>
 			</div>
 			<div class="playing-song-details">
-				<b id="playing-song-title"> Allegro </b><br/>
-				<i id="playing-song-artist"> Beethoven </i>
+				<b id="playing-song-title"></b><br/>
+				<i id="playing-song-artist"></i>
 			</div>
 		</div>
 	</body>

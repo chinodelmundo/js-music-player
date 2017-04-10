@@ -1,5 +1,52 @@
-var init = function(){
-		$(".play-button").on("click", function(e){
+function SongItem(title, artist, url, selected){
+	this.title = title;
+	this.artist = artist;
+	this.url = url;
+	this.selected = selected;
+}
+
+var songList = [];
+songList.push(new SongItem("Great Balls of Fire", "Blackwell & Hammer", "http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2013.mp3", true));
+songList.push(new SongItem("Cheek to Cheek", "Irving Berlin", "http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2005.mp3", false));
+songList.push(new SongItem("Jailhouse Rock", "Leiber & Stoller", "http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2010.mp3", false));
+songList.push(new SongItem("Enya Song", "Enya", "http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2001.mp3", false));
+songList.push(new SongItem("Embraceable You", "George Gershwin", "http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2008.mp3", false));
+
+var createList = function(songList){
+	songList.forEach(function(song, index){
+		$songItem = $("<div></div>").addClass("song-item");
+		
+		
+		$playButton = $("<button></button>").addClass("pure-button fa fa-play play-button");
+		$songDetails = $("<div></div>").addClass("song-details");
+		$breakLine = $("<br/>");
+		$songTitle = $("<b></b>").text(song.title);
+		$songArtist = $("<i></i>").text(song.artist);
+		$songAudio = $("<audio></audio>");
+		$songSource = $("<source />").attr("src", song.url)
+									.attr("type", "audio/mpeg");
+									
+		if(song.selected){
+			$songItem.addClass("song-selected");
+			$("#playing-song-title").text(song.title);
+			$("#playing-song-artist").text(song.artist);
+		}
+		
+		$songAudio.append($songSource)
+		$songDetails.append($songTitle)
+					.append($breakLine)
+					.append($songArtist)
+					.append($songAudio);
+		
+		$songItem.append($playButton)
+				.append($songDetails);
+		
+		$("#song-list").append($songItem)
+	});
+}
+
+var initEventHandlers = function(){
+		$("#song-list").on("click", "button", function(e){
 			$target = $(e.target);
 			
 			if($target.hasClass("fa-play")){
@@ -17,7 +64,6 @@ var init = function(){
 			
 			togglePlay($target.parent());
 		});
-		
 
 		$(".player-button").on("click", function(e){
 			$target = $(e.target);
@@ -33,8 +79,6 @@ var init = function(){
 				togglePlay($songItem);
 			}else if($target.hasClass("fa-play-circle-o")){
 				var title = $target.parent().parent().find("b").text();
-			
-				console.log(title);
 			
 				$button = $(".song-item b:contains(" + title + ")").parent().parent().find("button");
 				
@@ -52,7 +96,7 @@ var init = function(){
 				if($currentSongItem.prev().length){
 					$prevSongItem = $currentSongItem.prev();
 				}else{
-					$prevSongItem = $(".song-list").children().last();
+					$prevSongItem = $("#song-list").children().last();
 				}
 				
 				changeSelected($prevSongItem);
@@ -64,13 +108,28 @@ var init = function(){
 				if($currentSongItem.next().length){
 					$nextSongItem = $currentSongItem.next();
 				}else{
-					$nextSongItem = $(".song-list").children().first();
+					$nextSongItem = $("#song-list").children().first();
 				}
 				
 				changeSelected($nextSongItem);
 				togglePlay($currentSongItem);
 				togglePlay($nextSongItem);
 			}
+		});
+	
+		$("#add-button").on("click", function(e){
+			$("#add-panel").toggle(500);
+		});
+		
+		$("#hide-panel-button").on("click", function(e){
+			$("#add-panel").toggle(500);
+		});
+		
+		$("#submit-song").on("click", function(e){
+			var title = $("#song-title").val();
+			var artist = $("#song-artist").val();
+			var url = $("#song-url").val();
+			createList([new SongItem(title, artist, url, false)]);
 		});
 	}
 
@@ -106,5 +165,6 @@ var togglePlay = function($songItem){
 }
 
 $(document).ready( function(){
-	init();
+	createList(songList);
+	initEventHandlers();
 });
