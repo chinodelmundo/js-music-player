@@ -97,6 +97,12 @@
 	
 }
 
+.song-number {
+	width: 30px;
+	font-size: 30px;
+	text-align: right;
+}
+
 label, legend {
 	font-weight: bold;
 }

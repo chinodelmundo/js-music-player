@@ -12,12 +12,16 @@ songList.push(new SongItem("Jailhouse Rock", "Leiber & Stoller", "http://www.ste
 songList.push(new SongItem("Enya Song", "Enya", "http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2001.mp3", false));
 songList.push(new SongItem("Embraceable You", "George Gershwin", "http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2008.mp3", false));
 
+var songNumber = 1;
+
 var createList = function(songList){
 	songList.forEach(function(song, index){
 		$songItem = $("<div></div>").addClass("song-item");
 		
 		
 		$playButton = $("<button></button>").addClass("pure-button fa fa-play play-button");
+		$songNumber = $("<div></div>").addClass("song-number")
+									  .append(songNumber + ".");
 		$songDetails = $("<div></div>").addClass("song-details");
 		$breakLine = $("<br/>");
 		$songTitle = $("<b></b>").text(song.title);
@@ -39,9 +43,11 @@ var createList = function(songList){
 					.append($songAudio);
 		
 		$songItem.append($playButton)
+				.append($songNumber)
 				.append($songDetails);
 		
 		$("#song-list").append($songItem)
+		songNumber++;
 	});
 }
 
