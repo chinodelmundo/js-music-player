@@ -72,7 +72,7 @@ var initEventHandlers = function(){
 				$target.removeClass("fa-pause-circle-o")
 						.addClass("fa-play-circle-o");
 						
-				$songItem = $(".fa-pause").parent();
+				$songItem = $(".song-selected");
 				$(".fa-pause").removeClass("fa-pause")
 						.addClass("fa-play");
 				
@@ -80,7 +80,8 @@ var initEventHandlers = function(){
 			}else if($target.hasClass("fa-play-circle-o")){
 				var title = $target.parent().parent().find("b").text();
 			
-				$button = $(".song-item b:contains(" + title + ")").parent().parent().find("button");
+				$songItem = $(".song-selected");
+				$button = $songItem.find("button");
 				
 				$target.removeClass("fa-play-circle-o")
 						.addClass("fa-pause-circle-o");
@@ -88,7 +89,6 @@ var initEventHandlers = function(){
 				$button.removeClass("fa-play")
 						.addClass("fa-pause");
 				
-				$songItem = $button.parent();
 				togglePlay($songItem);
 			}else if($target.hasClass("fa-step-backward")){
 				$currentSongItem = $(".song-selected");
@@ -100,7 +100,7 @@ var initEventHandlers = function(){
 				}
 				
 				changeSelected($prevSongItem);
-				togglePlay($currentSongItem);
+				stopSong($currentSongItem);
 				togglePlay($prevSongItem);
 			}else if($target.hasClass("fa-step-forward")){
 				$currentSongItem = $(".song-selected");
@@ -112,7 +112,7 @@ var initEventHandlers = function(){
 				}
 				
 				changeSelected($nextSongItem);
-				togglePlay($currentSongItem);
+				stopSong($currentSongItem);
 				togglePlay($nextSongItem);
 			}
 		});
@@ -160,6 +160,14 @@ var togglePlay = function($songItem){
 	if(song.paused){
 		song.play();
 	}else{
+		song.pause();
+	}
+}
+
+var stopSong = function($songItem){
+	var song = $songItem.find("audio").first().get(0);
+	
+	if(!song.paused){
 		song.pause();
 	}
 }
